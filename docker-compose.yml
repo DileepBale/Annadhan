@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # MongoDB service
+  mongodb:
+    image: mongo:5.0
+    container_name: annasamarpan-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+
+  # Annasamarpan application
+  app:
+    build: .
+    container_name: annasamarpan-app
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://admin:password123@mongodb:27017/
+      - SECRET_KEY=your-secret-key-change-in-production
+      - FLASK_ENV=production
+    volumes:
+      - ./logs:/app/logs
+
+volumes:
+  mongodb_data:

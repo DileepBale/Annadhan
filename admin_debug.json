@@ -1,0 +1,11 @@
+{
+  "admins": [
+    {
+      "_id": "69f42bd7256c447bcd76e2f7",
+      "created_at": "Fri, 01 May 2026 09:58:07 GMT",
+      "email": "admin@annasamarpan.com",
+      "password": "admin123",
+      "role": "admin"
+    }
+  ]
+}

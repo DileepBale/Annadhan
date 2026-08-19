@@ -1,0 +1,284 @@
+{% extends "base.html" %}
+
+{% block title %}Donate Food - Annasamarpan{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-gradient py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+            <i class="fas fa-gift mr-4"></i>Donate Food
+        </h1>
+        <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+            Your generous donation can help feed families in need. Every meal counts in our mission to eliminate hunger.
+        </p>
+    </div>
+</section>
+
+<!-- Donation Form Section -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+            <!-- Form Header -->
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-6">
+                <h2 class="text-2xl font-bold text-white mb-2">Food Donation Form</h2>
+                <p class="text-blue-100">Please fill out the details below to submit your donation</p>
+            </div>
+            
+            <!-- Form Content -->
+            <div class="p-8">
+                <form method="POST" class="space-y-8">
+                    <!-- Personal Information -->
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-semibold text-gray-800 flex items-center">
+                            <i class="fas fa-user mr-3 text-blue-600"></i>Personal Information
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                                <input type="text" id="name" name="name" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                       placeholder="Enter your full name">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                                <input type="email" id="email" name="email" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                       placeholder="Enter your email address">
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                       placeholder="Enter your phone number">
+                            </div>
+                            
+                            <div>
+                                <label for="pincode" class="block text-sm font-medium text-gray-700 mb-2">Pincode *</label>
+                                <input type="text" id="pincode" name="pincode" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                       placeholder="Enter your pincode">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="address" class="block text-sm font-medium text-gray-700 mb-2">Full Address *</label>
+                            <textarea id="address" name="address" rows="3" required
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                      placeholder="Enter your complete address"></textarea>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="city" class="block text-sm font-medium text-gray-700 mb-2">City *</label>
+                                <input type="text" id="city" name="city" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                       placeholder="Enter your city">
+                            </div>
+                            
+                            <div>
+                                <label for="state" class="block text-sm font-medium text-gray-700 mb-2">State *</label>
+                                <input type="text" id="state" name="state" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                       placeholder="Enter your state">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Donation Details -->
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-semibold text-gray-800 flex items-center">
+                            <i class="fas fa-utensils mr-3 text-green-600"></i>Donation Details
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="food_type" class="block text-sm font-medium text-gray-700 mb-2">Food Type *</label>
+                                <select id="food_type" name="food_type" required
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200">
+                                    <option value="">Select food type</option>
+                                    <option value="cooked_meals">Cooked Meals</option>
+                                    <option value="raw_vegetables">Raw Vegetables</option>
+                                    <option value="grains_rice">Grains & Rice</option>
+                                    <option value="fruits">Fresh Fruits</option>
+                                    <option value="dairy_products">Dairy Products</option>
+                                    <option value="packaged_food">Packaged Food</option>
+                                    <option value="bakery_items">Bakery Items</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="quantity" class="block text-sm font-medium text-gray-700 mb-2">Quantity *</label>
+                                <input type="text" id="quantity" name="quantity" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                       placeholder="e.g., 20 meals, 5 kg, 10 pieces">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Description *</label>
+                            <textarea id="description" name="description" rows="4" required
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                      placeholder="Please provide detailed description of the food items you're donating"></textarea>
+                        </div>
+                        
+                        <div>
+                            <label for="expiry_date" class="block text-sm font-medium text-gray-700 mb-2">Expiry Date (if applicable)</label>
+                            <input type="date" id="expiry_date" name="expiry_date"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200">
+                        </div>
+                    </div>
+                    
+                    <!-- Terms and Conditions -->
+                    <div class="bg-blue-50 rounded-lg p-6">
+                        <div class="flex items-start">
+                            <input type="checkbox" id="terms" required
+                                   class="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                            <label for="terms" class="ml-3 text-sm text-gray-700">
+                                I agree to the <a href="#" class="text-blue-600 hover:underline">Terms and Conditions</a> 
+                                and confirm that the food I'm donating is safe for consumption and properly stored.
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <button type="submit" 
+                                class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-12 py-4 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            <i class="fas fa-paper-plane mr-2"></i>Submit Donation
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Information Section -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">What Happens Next?</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                After you submit your donation, here's what we do to ensure it reaches those in need
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Step 1 -->
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-check-circle text-blue-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">1. Verification</h3>
+                <p class="text-gray-600">
+                    Our admin team reviews your donation details and verifies the information provided.
+                </p>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-user-plus text-green-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">2. Volunteer Assignment</h3>
+                <p class="text-gray-600">
+                    We assign a nearby volunteer who will pick up your donation and deliver it to recipients.
+                </p>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-truck text-purple-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">3. Delivery</h3>
+                <p class="text-gray-600">
+                    The volunteer picks up your donation and delivers it to verified recipients in need.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Guidelines Section -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Donation Guidelines</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Acceptable Items -->
+                <div>
+                    <h3 class="text-xl font-semibold text-green-600 mb-4 flex items-center">
+                        <i class="fas fa-check-circle mr-2"></i>Acceptable Items
+                    </h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Fresh fruits and vegetables
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Cooked meals (within 2 hours)
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Packaged food (unopened)
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Grains, rice, and pulses
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Dairy products (properly stored)
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Bakery items (fresh)
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Not Acceptable -->
+                <div>
+                    <h3 class="text-xl font-semibold text-red-600 mb-4 flex items-center">
+                        <i class="fas fa-times-circle mr-2"></i>Not Acceptable
+                    </h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center">
+                            <i class="fas fa-times text-red-500 mr-2"></i>
+                            Expired or spoiled food
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-times text-red-500 mr-2"></i>
+                            Food left out for more than 2 hours
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-times text-red-500 mr-2"></i>
+                            Opened packaged items
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-times text-red-500 mr-2"></i>
+                            Alcohol or tobacco products
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-times text-red-500 mr-2"></i>
+                            Non-food items
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-times text-red-500 mr-2"></i>
+                            Food with unknown ingredients
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

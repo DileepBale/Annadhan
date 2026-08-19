@@ -1,0 +1,29 @@
+# Node / React
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# .NET / C#
+bin/
+obj/
+*.user
+*.userosscache
+*.sln.docstates
+
+# Environment & Secrets
+.env
+
+# IDEs & System
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
