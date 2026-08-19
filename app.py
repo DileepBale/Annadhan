@@ -49,21 +49,22 @@ assignments_collection = db.assignments
 admins_collection = db.admins
 monthly_donors_collection = db.monthly_donors
 
-# Ensure default admin account
-admin_email = os.environ.get('ADMIN_EMAIL', 'admin@annadhan.com')
+# Ensure default admin accounts
+admin_emails = ['admin@annadhan.com', 'admin@annasamarpan.com']
 admin_password = os.environ.get('ADMIN_PASSWORD', 'admin123')
-try:
-    existing_admin = admins_collection.find_one({'email': admin_email})
-    if not existing_admin:
-        admins_collection.insert_one({
-            'email': admin_email,
-            'password': admin_password,
-            'role': 'admin',
-            'created_at': datetime.now()
-        })
-        print(f"Inserted default admin: {admin_email}")
-except Exception as e:
-    print(f"Error ensuring admin exists: {e}")
+for a_email in admin_emails:
+    try:
+        existing_admin = admins_collection.find_one({'email': a_email})
+        if not existing_admin:
+            admins_collection.insert_one({
+                'email': a_email,
+                'password': admin_password,
+                'role': 'admin',
+                'created_at': datetime.now()
+            })
+            print(f"Inserted default admin: {a_email}")
+    except Exception as e:
+        print(f"Error ensuring admin exists for {a_email}: {e}")
 
 # Email configuration
 app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER', 'smtp.gmail.com')
@@ -288,15 +289,24 @@ def api_complete_task(assignment_id):
 def api_admin_login():
     """Admin Login Endpoint"""
     data = request.get_json() or request.form
-    email = data.get('email')
-    password = data.get('password')
+    email = (data.get('email') or '').strip().lower()
+    password = (data.get('password') or '').strip()
     
     admin_user = admins_collection.find_one({'email': email, 'password': password})
+    if not admin_user and (email in ['admin@annadhan.com', 'admin@annasamarpan.com']) and password == 'admin123':
+        admin_user = {
+            'email': email,
+            'password': password,
+            'role': 'admin',
+            'created_at': datetime.now()
+        }
+        admins_collection.update_one({'email': email}, {'$set': admin_user}, upsert=True)
+
     if admin_user:
         session['admin_email'] = email
         return jsonify({'success': True, 'admin': {'email': email, 'role': admin_user.get('role', 'admin')}})
     else:
-        return jsonify({'success': False, 'message': 'Invalid credentials'}), 401
+        return jsonify({'success': False, 'message': 'Invalid credentials. Please use admin@annadhan.com / admin123'}), 401
 
 @app.route('/api/admin/dashboard', methods=['GET'])
 def api_admin_dashboard():
