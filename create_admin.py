@@ -8,10 +8,10 @@ load_dotenv()
 # MongoDB configuration
 MONGO_URI = os.environ.get('MONGO_URI', 'mongodb+srv://kasheesh:kashees@sonu.0qkexwl.mongodb.net/?retryWrites=true&w=majority&appName=sonu')
 client = MongoClient(MONGO_URI)
-db = client.annasamarpan
+db = client.annadhan
 
 # Admin credentials from .env or default
-admin_email = os.environ.get('ADMIN_EMAIL', 'admin@annasamarpan.com')
+admin_email = os.environ.get('ADMIN_EMAIL', 'admin@annadhan.com')
 admin_password = os.environ.get('ADMIN_PASSWORD', 'admin123')
 
 # Check if admin already exists

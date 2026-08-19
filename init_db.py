@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Database initialization script for Annasamarpan
+Database initialization script for Annadhan
 This script creates demo data for testing the application
 """
 
@@ -15,11 +15,11 @@ load_dotenv()
 # MongoDB configuration
 MONGO_URI = os.environ.get('MONGO_URI', 'mongodb://localhost:27017/')
 client = MongoClient(MONGO_URI)
-db = client.annasamarpan
+db = client.annadhan
 
 def init_database():
     """Initialize database with demo data"""
-    print("🚀 Initializing Annasamarpan database...")
+    print("🚀 Initializing Annadhan database...")
     
     # Clear existing collections (optional - comment out for production)
     # db.donors.drop()
@@ -31,7 +31,7 @@ def init_database():
     
     # Create admin user
     admin_data = {
-        'email': 'admin@annasamarpan.com',
+        'email': 'admin@annadhan.com',
         'password': 'admin123',
         'name': 'System Administrator',
         'role': 'admin',
@@ -39,10 +39,10 @@ def init_database():
     }
     
     # Check if admin already exists
-    existing_admin = db.admins.find_one({'email': 'admin@annasamarpan.com'})
+    existing_admin = db.admins.find_one({'email': 'admin@annadhan.com'})
     if not existing_admin:
         db.admins.insert_one(admin_data)
-        print("✅ Admin user created: admin@annasamarpan.com / admin123")
+        print("✅ Admin user created: admin@annadhan.com / admin123")
     else:
         print("ℹ️  Admin user already exists")
     
@@ -266,7 +266,7 @@ def init_database():
     
     print("\n🎉 Database initialization completed!")
     print("\n🔑 Admin Login Credentials:")
-    print("   Email: admin@annasamarpan.com")
+    print("   Email: admin@annadhan.com")
     print("   Password: admin123")
     
     print("\n📱 Demo User Credentials:")

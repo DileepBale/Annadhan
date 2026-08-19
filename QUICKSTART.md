@@ -1,4 +1,4 @@
-# Quick Start Guide - Annasamarpan
+# Quick Start Guide - Annadhan
 
 ## 🚀 Getting Started in 5 Minutes
 
@@ -14,7 +14,7 @@
 2. **Clone and Setup**
    ```bash
    git clone <repository-url>
-   cd annasamarpan
+   cd annadhan
    
    # Create virtual environment
    python -m venv venv
@@ -42,7 +42,7 @@
 
 6. **Access Application**
    - Open browser: http://localhost:5000
-   - Admin login: admin@annasamarpan.com / admin123
+   - Admin login: admin@annadhan.com / admin123
 
 ### Option 2: Docker Setup
 
@@ -53,12 +53,12 @@
 
 2. **Initialize Database**
    ```bash
-   docker exec -it annasamarpan-app python init_db.py
+   docker exec -it annadhan-app python init_db.py
    ```
 
 3. **Access Application**
    - Open browser: http://localhost:5000
-   - Admin login: admin@annasamarpan.com / admin123
+   - Admin login: admin@annadhan.com / admin123
 
 ## 🎯 Key Features to Test
 
@@ -106,7 +106,7 @@ MAIL_PASSWORD=your-app-password
 ## 📱 Demo Data
 
 The `init_db.py` script creates:
-- **Admin User**: admin@annasamarpan.com / admin123
+- **Admin User**: admin@annadhan.com / admin123
 - **Demo Donors**: 3 sample donors with donations
 - **Demo Volunteers**: 3 volunteers in different cities
 - **Demo Recipients**: 3 verified recipients

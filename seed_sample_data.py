@@ -1,4 +1,4 @@
-"""Seed sample data for Annasamarpan.
+"""Seed sample data for Annadhan.
 This script connects to the MongoDB configured in MONGO_URI (or falls back to mongomock)
 and inserts sample documents into the common collections.
 """
@@ -30,7 +30,7 @@ def main():
     load_dotenv()
     MONGO_URI = os.environ.get('MONGO_URI', 'mongodb://localhost:27017/')
     client = create_mongo_client(MONGO_URI)
-    db = client.annasamarpan
+    db = client.annadhan
 
     # Clear some collections (idempotent-ish for local testing)
     db.donors.delete_many({})
@@ -41,7 +41,7 @@ def main():
     db.monthly_donors.delete_many({})
 
     # Insert admin if not exists
-    admin_email = os.environ.get('ADMIN_EMAIL', 'admin@annasamarpan.com')
+    admin_email = os.environ.get('ADMIN_EMAIL', 'admin@annadhan.com')
     admin_password = os.environ.get('ADMIN_PASSWORD', 'admin123')
     if not db.admins.find_one({'email': admin_email}):
         db.admins.insert_one({'email': admin_email, 'password': admin_password, 'role': 'admin', 'created_at': datetime.now()})

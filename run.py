@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Run script for Annasamarpan application
+Run script for Annadhan application
 This script starts the Flask development server
 """
 
@@ -22,9 +22,9 @@ if __name__ == '__main__':
         sys.exit(1)
     
     # Start the Flask application
-    print("🚀 Starting Annasamarpan application...")
+    print("🚀 Starting Annadhan application...")
     print("📱 Access the application at: http://localhost:5000")
-    print("🔑 Admin login: admin@annasamarpan.com / admin123")
+    print("🔑 Admin login: admin@annadhan.com / admin123")
     print("🛑 Press Ctrl+C to stop the server")
     
     app.run(

@@ -4,7 +4,7 @@ services:
   # MongoDB service
   mongodb:
     image: mongo:5.0
-    container_name: annasamarpan-mongodb
+    container_name: annadhan-mongodb
     restart: unless-stopped
     ports:
       - "27017:27017"
@@ -14,10 +14,10 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: password123
 
-  # Annasamarpan application
+  # Annadhan application
   app:
     build: .
-    container_name: annasamarpan-app
+    container_name: annadhan-app
     restart: unless-stopped
     ports:
       - "5000:5000"

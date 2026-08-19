@@ -50,7 +50,7 @@ admins_collection = db.admins
 monthly_donors_collection = db.monthly_donors
 
 # Ensure default admin accounts
-admin_emails = ['admin@annadhan.com', 'admin@annasamarpan.com']
+admin_emails = ['admin@annadhan.com', 'admin@annadhan.com']
 admin_password = os.environ.get('ADMIN_PASSWORD', 'admin123')
 for a_email in admin_emails:
     try:
@@ -293,7 +293,7 @@ def api_admin_login():
     password = (data.get('password') or '').strip()
     
     admin_user = admins_collection.find_one({'email': email, 'password': password})
-    if not admin_user and (email in ['admin@annadhan.com', 'admin@annasamarpan.com']) and password == 'admin123':
+    if not admin_user and (email in ['admin@annadhan.com', 'admin@annadhan.com']) and password == 'admin123':
         admin_user = {
             'email': email,
             'password': password,
